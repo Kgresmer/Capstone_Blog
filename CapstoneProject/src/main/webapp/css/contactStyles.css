@@ -1,0 +1,29 @@
+body {
+    font-family: secondFont; 
+    font-size: 14px;
+    background-image: url('pole.jpg');
+        background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: black;
+    color: white;
+}
+.container-fluid {
+    background-image: url('black.png');
+    background-size:100%;
+}
+p{
+    
+    font-size: 18px;
+}
+#headerTitle a {
+    margin-top: 18px;
+    margin-bottom: 10px;
+    color: white;
+    text-decoration: none;
+    font-family: myFirstFont;
+    font-size: 42px;
+}
+li a {
+    color: white;
+    font-size: 14px;
+}

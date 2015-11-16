@@ -1,0 +1,50 @@
+-make edit not create copies of same post**DONE**
+-build out post count functionality**DONE**
+-build out list tags on main page**DONE**
+-custom error page**DONE**
+-tags**DONE**
+-search functionality**DONE**
+-active posts**DONE**
+-add tags to homepage display**DONE**
+-tags should filter by published**DONE**
+-total count should filter by published**DONE**
+-display in correct order**DONE**
+-login redirecting**DONE**
+-finalize login + fix redirect
+
+
+-pinned posts -Shawn
+-validation -Alex
+-make publish work properly -Kevin
+-expiration date functionality
+-publish time functionality
+-POLISHING
+
+
+__________to be done_________________
+write test class/methods
+
+Catogorization + tagging functionality 
+test edit and delete functions/buttons
+build search method via tags
+design front end of employee page
+Display pinned posts before active blog posts on home page
+Test database methods/queries.
+Update any documents as needed
+
+
+Finalize SQL 
+-tags
+-search functionality
+-pinned posts
+
+Java/JavaScript
+-make edit not create copies of same post
+-build out post count functionality
+-build out list tags on main page
+-EXPIRATION FUNCTIONALITY
+
+Other
+- Fill out About Us
+- Re arrange how blog posts show up.
+

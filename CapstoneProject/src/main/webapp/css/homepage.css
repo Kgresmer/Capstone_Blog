@@ -1,0 +1,140 @@
+
+body {
+    font-family: secondFont; 
+    font-size: 14px;
+    background-image: url('wall.jpg');
+    background-color: black;
+    color: white;
+}
+#profilepic {
+    height: 60px;
+}
+#basicinfo {
+    background-image: url('black.png');
+    background-size:100%;
+    margin-bottom: 1em;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 7px;
+    -moz-box-shadow:inset 0px 0px 16px -3px white;
+    -webkit-box-shadow:inset 0px 0px 16px -3px white;
+    box-shadow:inset 0px 0px 16px -3px white;
+}
+#facebookinfo {
+    padding: 10px;
+    background-image: url('black.png');
+    background-size:100%;
+    margin-bottom: 1em;
+    border-radius: 7px;
+    -moz-box-shadow:inset 0px 0px 16px -3px white;
+    -webkit-box-shadow:inset 0px 0px 16px -3px white;
+    box-shadow:inset 0px 0px 16px -3px white;
+}
+#leftcolumn {
+    margin-right: 1em;
+    margin-left: 1em;
+
+}
+#postscolumn {
+    margin-bottom: 1em;
+}
+#total1, #total2 {
+    background-image: url('black.png');
+    background-size:100%;
+}
+.blogpost{
+    background-image: url('black.png');
+    background-size:100%;
+}
+#total1, #total2, .blogpost {
+    border-radius: 7px;
+    padding: 1px 10px 5px 10px;
+    margin-top: 15px;
+    -moz-box-shadow:inset 0px 0px 16px -3px white;
+    -webkit-box-shadow:inset 0px 0px 16px -3px white;
+    box-shadow:inset 0px 0px 16px -3px white;
+}
+#tagsinfo {
+    padding: 10px;
+    background-image: url('black.png');
+    background-size:100%;
+    height: 200px;
+    margin-bottom: 1em;
+    border-radius: 7px;
+    -moz-box-shadow:inset 0px 0px 16px -3px white;
+    -webkit-box-shadow:inset 0px 0px 16px -3px white;
+    box-shadow:inset 0px 0px 16px -3px white;
+}
+#searchbar {
+    margin-bottom: 15px;
+
+}
+#headerTitle a {
+    margin-top: 18px;
+    margin-bottom: 10px;
+    color: white;
+    text-decoration: none;
+    font-family: myFirstFont;
+    font-size: 42px;
+}
+li a {
+    color: white;
+}
+button {
+    -moz-box-shadow:inset 0px 0px 14px -3px #f2fadc;
+    -webkit-box-shadow:inset 0px 0px 14px -3px #f2fadc;
+    box-shadow:inset 0px 0px 14px -3px #f2fadc;
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #dbe6c4), color-stop(1, #9ba892));
+    background:-moz-linear-gradient(top, #dbe6c4 5%, #9ba892 100%);
+    background:-webkit-linear-gradient(top, #dbe6c4 5%, #9ba892 100%);
+    background:-o-linear-gradient(top, #dbe6c4 5%, #9ba892 100%);
+    background:-ms-linear-gradient(top, #dbe6c4 5%, #9ba892 100%);
+    background:linear-gradient(to bottom, #dbe6c4 5%, #9ba892 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dbe6c4', endColorstr='#9ba892',GradientType=0);
+    background-color:#dbe6c4;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+    border:1px solid #b2b8ad;
+    display:inline-block;
+    cursor:pointer;
+    color:black;
+    font-family:Arial;
+    font-size:15px;
+    font-weight:bold;
+    padding:5px 15px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #ced9bf;
+    margin: 3px;
+}
+button:hover {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #9ba892), color-stop(1, #dbe6c4));
+    background:-moz-linear-gradient(top, #9ba892 5%, #dbe6c4 100%);
+    background:-webkit-linear-gradient(top, #9ba892 5%, #dbe6c4 100%);
+    background:-o-linear-gradient(top, #9ba892 5%, #dbe6c4 100%);
+    background:-ms-linear-gradient(top, #9ba892 5%, #dbe6c4 100%);
+    background:linear-gradient(to bottom, #9ba892 5%, #dbe6c4 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#9ba892', endColorstr='#dbe6c4',GradientType=0);
+    background-color:#9ba892;
+}
+button:active {
+    position:relative;
+    top:1px;
+}
+.showall-button {
+    text-decoration: underline;
+    color: #d58512;
+    font-size: 11px;
+}
+.pull-right {
+    font-size: 14px;
+}
+#postRows, #postPinRows {
+    border-top: 1px solid; 
+    border-color: #257cb6;
+}
+.profilepic {
+    content:url("http://imgur.com/SZ8Cm.jpg");
+    height: 45px;
+    width: 45px;
+}

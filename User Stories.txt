@@ -1,0 +1,43 @@
+User Stories:
+
+_________DONE____________
+Site wireframe - home page
+site wireframe - admin page
+site wireframe - employee page
+Site Map
+ERD Light
+ERD Heavy
+UML Class diagram
+Design front end of home page
+design front end of admin page
+design front end of login page
+design front end of disclaimer page
+Put all css into separate external stylesheets
+Write js function to add posts
+write js function to edit and delete posts
+write front end modal for editing posts
+Display drafts in admin page/js function
+Display active blog posts in admin page/js function
+Add a status change button
+Add a post to the drafts
+Add a post to the active blog posts
+Displays blog posts to everyone
+Make the admin page more aesthetically appealing 
+Set up controllers for admin and employee page.
+Build the database
+
+__________to be done_________________
+write test class/methods
+custom error page
+Add login authorization
+Authorization functionality, 2 levels
+Catogorization + tagging functionality 
+test edit and delete functions/buttons
+build search method via tags
+design front end of employee page
+Display pinned posts before active blog posts on home page
+Take program out of in memory and into database
+Test database methods/queries.
+Update any documents as needed
+Add images to blog posts
+Store the images with the blog post objects

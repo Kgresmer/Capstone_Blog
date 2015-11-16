@@ -1,0 +1,24 @@
+clicking on tags reduces posts in the window
+not categories, all tags
+list of tags on the column of home page
+
+users other than you can't edit published posts. but a publish post status can be changed to draft. 
+
+after search by tag, the pinned posts should still be there
+
+publish posts on a set date.
+
+Search posts in admin page, extra feature
+	maybe use a dropdown menu
+
+
+JSTL Notes
+<c:if test="${not empty pageContext.request.userPrincipal}">
+
+    <c:if test="${pageContext.request.isUserInRole('ADMIN')}">
+
+        User ${pageContext.request.userPrincipal.name} in ADMIN Group
+
+    </c:if>
+
+</c:if>
