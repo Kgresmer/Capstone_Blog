@@ -15,37 +15,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css"
               rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/css/adminStyles.css" rel="stylesheet">
         <title>JSP Page</title>
-        <!--    <intercept-url pattern="/favicon.ico" access="ROLE_ANONYMOUS" />-->
-        <style>
-            #titlerow{
-                margin-top: 12px;
-            }
-            #unpublishbutton {
-                //    left: -30px;
-            }
-            input {
-                line-height: 2.3em; 
-            }
-            label {
-                line-height: 2.3em; 
-            }
-            body {
-                font-family: secondFont; 
-                font-size: 14px;
-                background-image: url('css/wall.jpg');
-                background-color: black;
-                color: black;
-            }
-            .container {
-                background-color: white;
-            }
-            .profilepic {
-                content:url("http://imgur.com/SZ8Cm.jpg");
-                height: 45px;
-                width: 45px;
-            }
-        </style>
     </head>
     <body>
         <h2></h2>
@@ -63,7 +34,7 @@
                             <a href="${pageContext.request.contextPath}/home">Home</a>
                         </li>
                         <li role="presentation">
-                            <a href="${pageContext.request.contextPath}/createNewUser">Create New User</a>
+                            <a href="${pageContext.request.contextPath}/userManagement">User Management</a>
                         </li>
                         <li role="presentation">
                             <a href="${pageContext.request.contextPath}/pinned">Pinned</a>

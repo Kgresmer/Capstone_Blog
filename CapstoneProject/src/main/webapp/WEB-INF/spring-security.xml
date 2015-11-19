@@ -5,7 +5,6 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <!-- #1 - Make security the default namespace -->
-<!-- #1 - Make security the default namespace -->
 <beans:beans xmlns="http://www.springframework.org/schema/security"
              xmlns:beans="http://www.springframework.org/schema/beans"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -17,7 +16,6 @@ and open the template in the editor.
     <!-- #2 - Make sure we don’t need authorization to get to the login or home page -->
     <http pattern="/login" security="none" />
     <http pattern="/home" security="none" />
-<!--    <http pattern="/" security="none" />-->
     <http pattern="/css/**" security="none" />
     <http pattern="/js/**" security="none" />
     <http pattern="/img/**" security="none" />
@@ -36,9 +34,6 @@ and open the template in the editor.
         <intercept-url pattern="/admin/" access="ROLE_ADMIN" />
         <intercept-url pattern="/employee" access="ROLE_USER" />
         <intercept-url pattern="/employee/" access="ROLE_USER" />
-<!--        <intercept-url pattern="/posts" access="ROLE_USER" />
-        <intercept-url pattern="/posts/" access="ROLE_USER" />-->
-        <!-- #3f - Access to all other controller endpoints require user role -->
   
     </http>
     <!-- #4 - Authentication Manager config -->
@@ -46,14 +41,6 @@ and open the template in the editor.
         <!-- #4a - Authentication Provider - we’re using the JDBC service -->
         <authentication-provider>
             <!-- #4b - Tells Spring Security where to look for user information -->
-            <!-- We use the dataSource defined in spring-persistence.xml -->
-            <!-- and we give Spring Security the query to use to lookup -->
-            <!-- the user’s credentials (get the password from the users -->
-            <!-- tables and get the roles from the authorities table) -->
-<!--            <user-service>
-        <user name="admin" password="password" authorities="ROLE_USER, ROLE_ADMIN" />
-        <user name="employee" password="password" authorities="ROLE_USER" />
-      </user-service>-->
             <jdbc-user-service id="userService"
                     data-source-ref="dataSource"
                     users-by-username-query=

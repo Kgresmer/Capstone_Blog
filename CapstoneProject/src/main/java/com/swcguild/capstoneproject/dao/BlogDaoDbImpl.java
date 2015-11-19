@@ -1,28 +1,19 @@
 package com.swcguild.capstoneproject.dao;
 
+import com.swcguild.capstoneproject.model.Authority;
 import com.swcguild.capstoneproject.model.PinPost;
 import com.swcguild.capstoneproject.model.Post;
-
 import com.swcguild.capstoneproject.model.Tag;
 import com.swcguild.capstoneproject.model.User;
-
 import java.sql.ResultSet;
-
 import java.sql.SQLException;
 import java.time.LocalDate;
-
 import java.time.LocalDateTime;
-
 import java.util.List;
-
 import org.springframework.dao.EmptyResultDataAccessException;
-
 import org.springframework.jdbc.core.JdbcTemplate;
-
 import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
-
 import org.springframework.transaction.annotation.Propagation;
-
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -77,9 +68,28 @@ public class BlogDaoDbImpl implements BlogDao {
     private static final String SQL_UPDATE_PINPOST
             = "update pinposts set title = ?, author = ?, content = ?, postDate = ?, expirationDate =?, status = ? where post_ID = ?";
 
+    private static final String SQL_SELECT_USER = "SELECT * FROM users WHERE user_ID = ?";
+
     private static final String SQL_NEW_USER = "INSERT INTO `users`(`username`, `password`, `enabled`) VALUES (?,?,?)";
 
+    private static final String SQL_UPDATE_USER
+            = "update users set username = ?, password = ?, enabled = ? where user_ID = ?";
+
+    private static final String SQL_DELETE_USER
+            = "delete from users where user_ID = ?";
+    
+    private static final String SQL_SELECT_ALL_USERS = "select * from users";
+
     private static final String SQL_NEW_AUTH = "INSERT INTO `authorities`(`username`, `authority`) VALUES (?,?)";
+
+    private static final String SQL_UPDATE_AUTH
+            = "update users set username = ?, authority = ? where user_ID = ?";
+
+    private static final String SQL_SELECT_AUTH = "select * from authorities where username = ?";
+
+    private static final String SQL_DELETE_AUTH = "delete from authorities where username = ?";
+
+    private static final String SQL_SELECT_ALL_AUTH = "select * from authorities";
 
     private JdbcTemplate jdbcTemplate;
 
@@ -159,8 +169,8 @@ public class BlogDaoDbImpl implements BlogDao {
         return jdbcTemplate.query(SQL_SELECT_ALL_POSTS, new PostMapper());
     }
 
+    @Override
     public List<Post> getAllPostObjects() {
-
         return jdbcTemplate.query(SQL_SELECT_ALL_POSTS, new PostMapper());
     }
 
@@ -172,37 +182,112 @@ public class BlogDaoDbImpl implements BlogDao {
     @Override
     public Post getPostById(int postID) {
         try {
-//            Tag tags = jdbcTemplate.queryForObject(SQL_GET_TAGS, new tagMapper(), postID);
-//            String tagList = "";
-//            for(String tag: tags.getList()) {
-//                tagList += ", " + tag;
-//            }
             Post post = jdbcTemplate.queryForObject(SQL_SELECT_POST, new PostMapper(), postID);
-//          post.setTags(tagList);
             return post;
         } catch (EmptyResultDataAccessException e) {
             return null;
         }
     }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//    private static final String SQL_NEW_USER = "INSERT INTO `users`(`username`, `password`, `enabled`, `image`) VALUES (?,?,?,?)";
-//    private static final String SQL_NEW_AUTH = "INSERT INTO `authorities`(`username`, `authority`) VALUES (?,?)";
     @Override
-    public void makeNewUser(User user) {
+    public User getUserById(int userID) {
+        try {
+            User user = jdbcTemplate.queryForObject(SQL_SELECT_USER, new UserMapper(), userID);
+            return user;
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
+    }
+
+    @Override
+    public User makeNewUser(User user) {
         if (user.isActive()) {
             jdbcTemplate.update(SQL_NEW_USER, user.getUsername(), user.getPassword(), 1);
         } else {
             jdbcTemplate.update(SQL_NEW_USER, user.getUsername(), user.getPassword(), 0);
         }
+        user.setUserID(jdbcTemplate.queryForObject("select LAST_INSERT_ID()", Integer.class));
+        if (user.isAdmin()) {
+            removeAuthority(user.getUsername());
+            makeNewAuthority(new Authority(user.getUsername(), "ROLE_USER"));
+            makeNewAuthority(new Authority(user.getUsername(),"ROLE_ADMIN"));
+        } else {
+            removeAuthority(user.getUsername());
+            makeNewAuthority(new Authority(user.getUsername(), "ROLE_USER"));
+        }
+        return user;
+    }
+
+    @Override
+    public void updateUser(User user) {
         
         if (user.isAdmin()) {
-            jdbcTemplate.update(SQL_NEW_AUTH, user.getUsername(), "ROLE_ADMIN");
-            jdbcTemplate.update(SQL_NEW_AUTH, user.getUsername(), "ROLE_USER");
+            removeAuthority(user.getUsername());
+            makeNewAuthority(new Authority(user.getUsername(), "ROLE_USER"));
+            makeNewAuthority(new Authority(user.getUsername(),"ROLE_ADMIN"));
         } else {
-            jdbcTemplate.update(SQL_NEW_AUTH, user.getUsername(), "ROLE_USER");
+            removeAuthority(user.getUsername());
+            makeNewAuthority(new Authority(user.getUsername(), "ROLE_USER"));
+        }
+        
+        if (user.isActive()) {
+            jdbcTemplate.update(SQL_UPDATE_USER, user.getUsername(), user.getPassword(), 1,  user.getUserID());
+        } else {
+            jdbcTemplate.update(SQL_UPDATE_USER, user.getUsername(), user.getPassword(), 0, user.getUserID());
+        }
+
+        
+    }
+
+    @Override
+    public void removeUser(int userID) {
+        removeAuthority(getUserById(userID).getUsername());
+        jdbcTemplate.update(SQL_DELETE_USER, userID);
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        List<User> users = jdbcTemplate.query(SQL_SELECT_ALL_USERS, new UserMapper());
+        return users;
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    @Override
+    public Authority getAuthorityByUsername(String username) {
+        try {
+            Authority auth = jdbcTemplate.queryForObject(SQL_SELECT_AUTH, new AuthorityMapper(), username);
+            return auth;
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
+    }
+    @Override
+    public List<Authority> getAuthoritiesByUsername(String username) {
+        try {
+            List<Authority> auth = jdbcTemplate.query(SQL_SELECT_AUTH, new AuthorityMapper(), username);
+            return auth;
+        } catch (EmptyResultDataAccessException e) {
+            return null;
         }
     }
 
+    @Override
+    public void makeNewAuthority(Authority auth) {
+        jdbcTemplate.update(SQL_NEW_AUTH, auth.getUsername(), auth.getAuthority());
+    }
+
+    @Override
+    public void removeAuthority(String username) {
+        jdbcTemplate.update(SQL_DELETE_AUTH, username);
+    }
+
+    @Override
+    public List<Authority> getAllAuthorities() {
+        return jdbcTemplate.query(SQL_SELECT_ALL_AUTH, new AuthorityMapper());
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////// 
     @Override
     public void publishPost(int id, Post data) {
         if (id != 0) {
@@ -334,6 +419,35 @@ public class BlogDaoDbImpl implements BlogDao {
             post.setExpirationDate(rs.getString("expirationDate"));
             post.setStatus(rs.getInt("status"));
             return post;
+        }
+    }
+
+    private static final class UserMapper implements ParameterizedRowMapper<User> {
+
+        @Override
+        public User mapRow(ResultSet rs, int i) throws SQLException {
+            User user = new User();
+            user.setUserID(rs.getInt("user_id"));
+            user.setUsername(rs.getString("username"));
+            user.setPassword(rs.getString("password"));
+            if (rs.getInt("enabled") == 1) {
+                user.setActive(true);
+            } else {
+                user.setActive(false);
+            }
+
+            return user;
+        }
+    }
+
+    private static final class AuthorityMapper implements ParameterizedRowMapper<Authority> {
+
+        @Override
+        public Authority mapRow(ResultSet rs, int i) throws SQLException {
+            Authority auth = new Authority();
+            auth.setUsername(rs.getString("username"));
+            auth.setAuthority(rs.getString("authority"));
+            return auth;
         }
     }
 

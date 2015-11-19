@@ -9,8 +9,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<c:if test="${pageContext.request.userPrincipal.name == 'owner'}">
-    <%response.sendRedirect("http://localhost:8080/CapstoneProject/admin");%>
+<c:if test="${not empty pageContext.request.userPrincipal}">
+    <c:if test="${pageContext.request.isUserInRole('ROLE_ADMIN')}">
+        <%response.sendRedirect("http://localhost:8080/CapstoneProject/admin");%>
+    </c:if>
 </c:if>
 <!DOCTYPE html>
 <html>
@@ -19,27 +21,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css"
               rel="stylesheet">
+         <link href="${pageContext.request.contextPath}/css/employeeStyles.css" rel="stylesheet">
         <title>JSP Page</title>
         <style>
             @font-face {
                 font-family: myFirstFont;
                 src: url(${pageContext.request.contextPath}/fonts/Hunt.ttf);
-            }
-
-            body {
-                font-size: 14px;
-                background-image: url('css/wall.jpg');
-                background-color: black;
-                color: black;
-            }
-            .container {
-                background-color: white;
-            }
-            input {
-                line-height: 2.3em; 
-            }
-            label {
-                line-height: 2.3em; 
             }
         </style>
     </head>

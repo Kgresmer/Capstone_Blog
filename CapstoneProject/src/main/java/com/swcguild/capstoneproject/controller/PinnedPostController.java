@@ -7,15 +7,12 @@ package com.swcguild.capstoneproject.controller;
 //
 
 import com.swcguild.capstoneproject.dao.BlogDao;
-import com.swcguild.capstoneproject.model.Data;
 import com.swcguild.capstoneproject.model.PinPost;
-import com.swcguild.capstoneproject.model.Post;
 import java.util.List;
 import javax.inject.Inject;
 import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

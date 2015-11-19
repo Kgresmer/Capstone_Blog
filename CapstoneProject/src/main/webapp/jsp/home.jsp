@@ -21,14 +21,7 @@
                 font-family: secondFont;
                 src: url(${pageContext.request.contextPath}/fonts/DeadheadRough.ttf);
             }
-/*            .profilepic {
-                content: url("http://imgur.com/SZ8Cm.jpg");
-                height: 45px;
-                width: 45px;
-            }*/
-            .authorlabel {
-                display:inline-block;
-            }
+
         </style>
     </head>
     <body>

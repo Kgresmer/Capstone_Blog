@@ -138,3 +138,6 @@ button:active {
     height: 45px;
     width: 45px;
 }
+.authorlabel {
+                display:inline-block;
+            }

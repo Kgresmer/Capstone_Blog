@@ -1,0 +1,19 @@
+ #titlerow{
+                margin-top: 12px;
+            }
+            input {
+                line-height: 2.3em; 
+            }
+            label {
+                line-height: 2.3em; 
+            }
+            body {
+                font-family: secondFont; 
+                font-size: 14px;
+                background-image: url('wall.jpg');
+                background-color: black;
+                color: black;
+            }
+            .container {
+                background-color: white;
+            }

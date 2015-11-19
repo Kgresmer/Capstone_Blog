@@ -1,0 +1,18 @@
+body {
+    font-size: 14px;
+    background-image: url('wall.jpg');
+    background-color: black;
+    color: black;
+}
+.container {
+    background-color: white;
+}
+input {
+    line-height: 2.3em; 
+}
+label {
+    line-height: 2.3em; 
+}
+#creatediv {
+    border-right: 1px  solid #ccc;
+}

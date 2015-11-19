@@ -6,10 +6,8 @@
 package com.swcguild.capstoneproject.controller;
 
 import com.swcguild.capstoneproject.dao.BlogDao;
-import com.swcguild.capstoneproject.model.Data;
 import com.swcguild.capstoneproject.model.Post;
 import com.swcguild.capstoneproject.model.Tag;
-import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import javax.validation.Valid;
@@ -67,10 +65,10 @@ public class AdminController {
 
     @RequestMapping(value = "/post/{id}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void putPost(@PathVariable("id") int id, @Valid @RequestBody Post address) {
+    public void putPost(@PathVariable("id") int id, @Valid @RequestBody Post post) {
 
-        address.setPostID(id);
-        dao.updatePost(address);
+        post.setPostID(id);
+        dao.updatePost(post);
 
     }
 

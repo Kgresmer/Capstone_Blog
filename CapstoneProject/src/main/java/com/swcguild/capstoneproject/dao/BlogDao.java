@@ -5,6 +5,7 @@
  */
 package com.swcguild.capstoneproject.dao;
 
+import com.swcguild.capstoneproject.model.Authority;
 import com.swcguild.capstoneproject.model.PinPost;
 import com.swcguild.capstoneproject.model.Post;
 import com.swcguild.capstoneproject.model.Tag;
@@ -18,7 +19,26 @@ import java.util.List;
 public interface BlogDao {
 
     public Post addPost(Post post);
-    public void makeNewUser(User user);
+    
+    public User getUserById(int userID);
+
+    public User makeNewUser(User user);
+
+    public void updateUser(User user);
+
+    public void removeUser(int userID);
+
+    public List<User> getAllUsers();
+    
+    public Authority getAuthorityByUsername(String username);
+    
+    public List<Authority> getAuthoritiesByUsername(String username);
+    
+    public void makeNewAuthority(Authority auth);
+    
+    public void removeAuthority(String username);
+    
+    public List<Authority> getAllAuthorities();
 
     public List<Post> getSearchPosts(String tag);
 
@@ -42,6 +62,8 @@ public interface BlogDao {
 
     public List<Post> getActivePosts();
 
+    public List<Post> getAllPostObjects();
+
     public List<Tag> getAllTags();
 
     public PinPost addPinPost(PinPost pinPost);
@@ -55,6 +77,6 @@ public interface BlogDao {
     public PinPost getPinPostById(int pinPostId);
 
     public void publishPinPost(int id, PinPost data);
-    
+
     public List<PinPost> getActivePinPosts();
 }

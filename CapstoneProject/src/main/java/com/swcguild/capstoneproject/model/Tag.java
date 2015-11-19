@@ -3,8 +3,7 @@
 
 package com.swcguild.capstoneproject.model;
 
-import java.util.ArrayList;
-import java.util.List;
+
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 

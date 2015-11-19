@@ -5,16 +5,9 @@
  */
 package com.swcguild.capstoneproject.controller;
 
-import com.swcguild.capstoneproject.dao.BlogDao;
-import com.swcguild.capstoneproject.model.Post;
-import javax.validation.Valid;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
  *
@@ -23,15 +16,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @Controller
 public class HomeController {
     
-//    private BlogDao dao;
-//    
-//    @RequestMapping(value = "/post", method = RequestMethod.POST)
-//    @ResponseStatus(HttpStatus.CREATED)
-//    @ResponseBody
-//    public Post createPost(@Valid @RequestBody Post post) {
-//        dao.addPost(post);
-//        return post;
-//
-//    }
-//    
+@RequestMapping(value = {"/", "/home"}, method = RequestMethod.GET)
+    public String displayHomePage() {
+        return "home";
+    }
 }

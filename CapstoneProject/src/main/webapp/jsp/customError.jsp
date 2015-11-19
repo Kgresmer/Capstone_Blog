@@ -11,15 +11,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Company Contacts</title>
+        <title>Sarah's Blog</title>
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css"
               rel="stylesheet">
         <link rel="shortcut icon"
               href="${pageContext.request.contextPath}/img/icon.png">
-        <link href="${pageContext.request.contextPath}/css/contactStyles.css" rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/css/customErrorStyles.css" rel="stylesheet">
         <style>
-            html, body {height:100%;width:100%;overflow:hidden}
-            iframe {height:100%;width:100%}
+            
         </style>
     </head>
     <body>

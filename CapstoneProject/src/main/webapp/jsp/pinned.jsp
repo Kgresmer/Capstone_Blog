@@ -15,32 +15,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css"
               rel="stylesheet">
+         <link href="${pageContext.request.contextPath}/css/pinnedStyles.css" rel="stylesheet">
         <title>Pinned Post Page</title>
-        <!--    <intercept-url pattern="/favicon.ico" access="ROLE_ANONYMOUS" />-->
-        <style>
-            #titlerow{
-                margin-top: 12px;
-            }
-            #unpublishbutton {
-                //    left: -30px;
-            }
-            input {
-                line-height: 2.3em; 
-            }
-            label {
-                line-height: 2.3em; 
-            }
-            body {
-                font-family: secondFont; 
-                font-size: 14px;
-                background-image: url('css/wall.jpg');
-                background-color: black;
-                color: black;
-            }
-            .container {
-                background-color: white;
-            }
-        </style>
+
     </head>
     <body>
         <h2></h2>
@@ -58,6 +35,9 @@
                         </li>
                         <li role="presentation">
                             <a href="${pageContext.request.contextPath}/admin">Admin</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="${pageContext.request.contextPath}/userManagement">User Management</a>
                         </li>
                         <li role="presentation">
                             <a href="${pageContext.request.contextPath}/j_spring_security_logout">Log
